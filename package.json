@@ -82,6 +82,8 @@
     "@openzeppelin/contracts": "^5.4.0",
     "chai": "^4.3.0",
     "ethereum-waffle": "^4.0.10",
-    "hardhat": "^2.22.0"
+    "hardhat": "^2.22.0",
+     "@craco/craco": "^7.1.0",
+    "cross-env": "^7.0.3"
   }
 }
