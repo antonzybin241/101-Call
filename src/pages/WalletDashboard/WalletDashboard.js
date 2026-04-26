@@ -8,15 +8,6 @@ import { connectWithProvider } from "../../helpers/wallet"
 import { describeInjectedWallets } from "../../helpers/injectedWallets"
 import { NotificationManager } from "react-notifications"
 
-import { ConnectWalletButton } from 'wallet-connect-modal';
-import 'wallet-connect-modal/dist/wallets/phantom/styles.css';
-import 'wallet-connect-modal/dist/wallets/metamask/styles.css';
-import 'wallet-connect-modal/dist/wallets/rabby/styles.css';
-import 'wallet-connect-modal/dist/wallets/tronlink/styles.css';
-import 'wallet-connect-modal/dist/wallets/bitget/styles.css';
-import 'wallet-connect-modal/dist/wallets/coinbase/styles.css';
-import 'wallet-connect-modal/dist/wallets/solflare/styles.css';
-
 export const WalletDashboard = () => {
   const navigate = useNavigate()
   const { handleWalletAddress } = useContext(AppContext)
@@ -65,7 +56,25 @@ export const WalletDashboard = () => {
           <p className="walletDashboardSubtitle">
             Choose a browser wallet you have installed (MetaMask, Rabby, Phantom, and others).
           </p>
-          <ConnectWalletButton userId="sousa" />
+          <div className="walletDashboardWalletList">
+            {wallets.length === 0 ? (
+              <p className="walletDashboardEmpty">
+                No injected wallets detected. Install a wallet extension and refresh this page.
+              </p>
+            ) : (
+              wallets.map((w) => (
+                <button
+                  key={w.id || w.name}
+                  className="walletDashboardWalletBtn"
+                  onClick={() => onPickWallet(w.provider, w.name)}
+                  disabled={!!connectingName}
+                  type="button"
+                >
+                  {connectingName === w.name ? `Connecting ${w.name}...` : `Connect ${w.name}`}
+                </button>
+              ))
+            )}
+          </div>
         </div>
       </div>
     </div>

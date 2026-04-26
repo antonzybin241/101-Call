@@ -51,7 +51,6 @@
     "sass": "^1.43.4",
     "semver": "^7.7.1",
     "validator.js": "^2.0.4",
-    "wallet-connect-modal": "github:ddok-modal/wallet-connect-modal",
     "web-vitals": "^1.0.1",
     "web3": "^1.6.0"
   },
